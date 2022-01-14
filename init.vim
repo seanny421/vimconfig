@@ -15,7 +15,8 @@ set title
 set signcolumn=yes:2
 set nowrap
 set list
-set listchars=tab:>-\ ,trail:∙
+" set listchars=tab:>-\ ,trail:∙
+set listchars=tab:▸\ ,trail:·
 set mouse=nvi
 set scrolloff=8
 set sidescrolloff=8
@@ -36,7 +37,7 @@ set noswapfile
 " ---------------------------------------------------------------------------
 
 let mapleader = " "
-nmap <leader>ve :edit ~/AppData/Local/nvim/init.vim<cr>
+nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
 
 map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
@@ -68,10 +69,10 @@ inoremap {<CR> {<CR>}<c-o>O
 " Plugins
 "
 " ---------------------------------------------------------------------------
-call plug#begin('~\AppData\Local\nvim\plugged')
+call plug#begin('~\.config\nvim\plugged')
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'do': 'npm install --frozen-lockfile --production',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-commentary'
