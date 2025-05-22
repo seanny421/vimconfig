@@ -1,0 +1,5 @@
+{
+  "snippets.ultisnips.pythonPrompt": false,
+  //FORMATTING
+  "coc.preferences.formatOnSave": true
+}

@@ -4,7 +4,7 @@ let g:NERDTreeDirArrowCollapsible = '▼'
 let NERDTreeQuitOnOpen=1
 
  " fuzzy finder config ------------------------------------------------------
-let g:fzf_layout = { 'up': '~90%', 'window': { 'width': 0.8, 'height': 0.8, 'yoffset':0.5, 'xoffset': 0.5 } }
+let g:fzf_layout = { 'up': '~80%', 'window': { 'width': 0.8, 'height': 0.8, 'yoffset':0.5, 'xoffset': 0.5 } }
 let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
 
  "use K to show documentation in preview window
@@ -16,11 +16,17 @@ autocmd FileType sh,python,text set commentstring=#%s
 autocmd FileType xml,html set commentstring=<!--%s--> # here %s is the content wrapped by comment strings
 
  "prettier run on save
-let g:neoformat_try_node_exe = 1
+" let g:neoformat_try_node_exe = 1
 " autocmd BufWritePre *.js Neoformat
 " autocmd FileType ts,tsx set commentstring={/*%s*/} # here %s is the content wrapped by comment strings
 
  "coc
+" key mappings example
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" there's way more, see `:help coc-key-mappings@en'
+"
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -42,11 +48,22 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+--flutter
+require("flutter-tools").setup {
+    widget_guides = {
+      enabled = true
+    },
+    settings = {
+      enableSnippets = true,
+    },
+  } 
+
+
  --colorizer
 require'colorizer'.setup()
  --transparent
 require("transparent").setup({
-  enable = true, -- boolean: enable transparent
+  --enable = true, -- boolean: enable transparent
   extra_groups = { -- table/string: additional groups that should be cleared
     -- In particular, when you set it to 'all', that means all available groups
 
@@ -58,7 +75,7 @@ require("transparent").setup({
     "BufferLineSeparator",
     "BufferLineIndicatorSelected",
   },
-  exclude = {}, -- table: groups you don't want to clear
+  exclude_groups = {}, -- table: groups you don't want to clear
 })
 
 --autopairs
@@ -69,4 +86,4 @@ EOF
 
 
 " source /Users/sean/.config/nvim/plugins/discord_config.vim
-source /Users/sean/.config/nvim/plugins/lualine_config.vim
+source /Users/seanmcgeachie/.config/nvim/plugins/lualine_config.vim

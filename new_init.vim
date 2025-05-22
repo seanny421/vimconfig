@@ -68,12 +68,14 @@ inoremap " ""<Esc>ha
 inoremap ' ''<Esc>ha
 inoremap ` ``<Esc>ha
 
-source /Users/sean/.config/nvim/plugins/plugins.vim
-source /Users/sean/.config/nvim/remaps/remaps.vim
+source /Users/seanmcgeachie/.config/nvim/plugins/plugins.vim
+source /Users/seanmcgeachie/.config/nvim/remaps/remaps.vim
 
 
 " colorscheme gruvbox
 " colorscheme challenger_deep
 " colorscheme dracula
-colorscheme tokyonight-storm
-" colorscheme panda
+" colorscheme tokyonight-storm
+" colorscheme tokyonight-night
+" colorscheme vitaminonec
+colorscheme panda

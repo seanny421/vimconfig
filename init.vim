@@ -213,4 +213,4 @@
 ""maybe take this out
 
 
-source /Users/sean/.config/nvim/new_init.vim
+source /Users/seanmcgeachie/.config/nvim/new_init.vim
