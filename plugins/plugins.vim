@@ -17,6 +17,7 @@ Plug 'windwp/nvim-autopairs'
 Plug 'nvim-lualine/lualine.nvim'
  "fuzzyfinding
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+Plug 'nvim-telescope/telescope-frecency.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
  "make it look pretty
 Plug 'pangloss/vim-javascript'

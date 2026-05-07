@@ -120,13 +120,81 @@ vim.fn.sign_define('DapBreakpoint', {
   numhl = 'DapBreakpoint'
 })
 
+
+--NEW (not fully tested)
+local dap = require('dap')
+   
+   dap.adapters.coreclr = {
+     type = 'executable',
+     command = 'netcoredbg',
+     args = {'--interpreter=vscode'}
+   }
+   
+   dap.configurations.cs = {
+     {
+       type = "coreclr",
+       name = "launch - netcoredbg",
+       request = "launch",
+       program = function()
+         return vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+       end,
+     },
+   }
+
  --colorizer
 require'colorizer'.setup()
 
 --autopairs
 require("nvim-autopairs").setup {}
 
+require("telescope").setup {
+  pickers = {
+    find_files = {
+      hidden = true,
+      theme = "dropdown",
+      layout_config = {
+        height = 0.9,
+        width = 0.8,
+      }
+    },
+    live_grep = {
+      layout_config = {
+        height = 0.9,
+        width = 0.8,
+        preview_width = 0.6,
+      }
+    }
+  },
+  extensions = {
+    frecency = {
+      show_scores = false,
+      show_unindexed = true,
+      default_workspace = 'CWD',
+      theme = "dropdown",
+      layout_config = {
+        height = 0.9,
+        width = 0.8,
+      },
+      -- recency_values = {
+        -- { age = 120, value = 1000 }, -- past 4 hours
+        -- { age = 240, value = 500 }, -- past 4 hours
+        -- { age = 1440, value = 80 },  -- past day
+        -- { age = 4320, value = 60 },  -- past 3 days
+        -- { age = 10080, value = 40 }, -- past week
+        -- { age = 43200, value = 20 }, -- past month
+        -- { age = 129600, value = 10 } -- past 90 days
+      -- },
+      sorting_strategy = 'descending',  -- Add this
+    }
+  }
+}
+
+require("telescope").load_extension("frecency")
+
 EOF
+
+" Override OmniSharp's debug command to use nvim-dap
+command! -nargs=0 OmniSharpDebugProject lua require('dap').continue()
 
 
 " source /Users/sean/.config/nvim/plugins/discord_config.vim
